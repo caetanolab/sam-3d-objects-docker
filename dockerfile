@@ -65,4 +65,4 @@ RUN printf '%s\n' \
  && chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["bash"]
+CMD ["bash", "-lc", "cd /workspace/sam-3d-objects && exec python server.py"]
