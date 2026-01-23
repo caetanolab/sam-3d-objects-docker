@@ -16,6 +16,7 @@ WORKDIR /workspace
 RUN git clone https://github.com/facebookresearch/sam-3d-objects.git \
  && rm -rf /workspace/sam-3d-objects/checkpoints # we will mount a volume with the checkpoints here when running the image
 WORKDIR /workspace/sam-3d-objects
+COPY server.py /workspace/sam-3d-objects/server.py
 
 
 ENV PIP_EXTRA_INDEX_URL="https://pypi.ngc.nvidia.com"
