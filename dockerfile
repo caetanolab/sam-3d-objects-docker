@@ -4,18 +4,18 @@ FROM condaforge/miniforge3:latest
 SHELL ["/bin/bash", "-lc"]
 
 # ---- system dependencies (OpenMP, X11, OpenGL) ----
-RUN apt-get update \
- && apt-get install -y --no-install-recommends \
-    libgomp1 \
-    libx11-6 \
-    libgl1 \
- && rm -rf /var/lib/apt/lists/*
+RUN mamba install -y -n base -c conda-forge \
+    libgomp \
+    libx11 \
+    libglvnd \
+ && mamba clean -a -y
 # --------------------------------------------------
 
 WORKDIR /workspace
 RUN git clone https://github.com/facebookresearch/sam-3d-objects.git \
  && rm -rf /workspace/sam-3d-objects/checkpoints # we will mount a volume with the checkpoints here when running the image
 WORKDIR /workspace/sam-3d-objects
+COPY server.py /workspace/sam-3d-objects/server.py
 
 
 ENV PIP_EXTRA_INDEX_URL="https://pypi.ngc.nvidia.com"

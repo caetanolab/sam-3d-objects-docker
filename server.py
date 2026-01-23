@@ -23,7 +23,7 @@ from inference import Inference
 # ----------------------------
 # Config / Globals
 # ----------------------------
-out_dir = Path("../shared/out")
+out_dir = Path(__file__).resolve().parent / "shared" / "out"
 out_dir.mkdir(parents=True, exist_ok=True)
 
 tag = "hf"
