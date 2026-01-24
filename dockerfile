@@ -52,7 +52,7 @@ RUN conda config --system --set auto_activate_base false \
  && sed -i -E 's/^(.*(conda|mamba)\s+activate\s+base.*)$/# \1/g' /root/.bashrc || true
 # -------------------------------------------------------------
 
-WORKDIR /workspace
+WORKDIR /workspace/sam-3d-objects
 
 RUN printf '%s\n' \
 '#!/usr/bin/env bash' \
